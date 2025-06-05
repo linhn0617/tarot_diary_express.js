@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1749130687977,
+      "tag": "0000_lean_warpath",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1749132722059,
+      "tag": "0001_shocking_elektra",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1749134429152,
+      "tag": "0002_talented_rage",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1749135648463,
+      "tag": "0003_plain_boomerang",
+      "breakpoints": true
+    }
+  ]
+}
