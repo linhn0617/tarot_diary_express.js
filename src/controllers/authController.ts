@@ -2,21 +2,26 @@ import { Request, Response } from 'express';
 import { ZodError } from 'zod';
 import { registerApiSchema } from '../schemas/userSchemas';
 import * as AuthService from '../services/authService';
+import { ResponseHelper } from '../helpers/apiResponseFormatter';
 
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const validatedData = registerApiSchema.parse(req.body);
     const result = await AuthService.register(validatedData);
-    res.status(201).json({ message: '註冊成功', data: result });
+    ResponseHelper.success(res, '註冊成功', 201);
   } catch (err) {
     if (err instanceof ZodError) {
-      res.status(400).json({
-        errors: err.errors.map(e => ({
-          field: e.path.join('.'),
-          message: e.message,
-        })),
-      });
+      const errors = err.errors.map(e => ({
+        field: e.path.join('.'),
+        message: e.message,
+      }));
+      ResponseHelper.validationError(res, '資料驗證失敗', errors);
     }
-    res.status(500).json({ message: '註冊失敗', error: err });
+
+    if ((err as any).cause?.code === '23505') {
+      ResponseHelper.error(res, '該電子郵件已被註冊。請使用其他電子郵件註冊或登入', 409);
+    }
+
+    ResponseHelper.error(res, '註冊失敗', 500);
   }
 };
