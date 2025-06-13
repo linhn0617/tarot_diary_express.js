@@ -1,0 +1,74 @@
+post:
+  tags:
+    - Auth
+  summary: 使用者註冊
+  description: 使用者註冊
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              example: test user
+            email:
+              type: string
+              example: test@example.com
+            password:
+              type: string
+              example: Password123
+            birthdate:
+              type: string
+              format: date
+              example: "1990-01-01"
+            gender:
+              type: string
+              example: "male"  
+          required:
+            - name
+            - email
+            - password
+            - birthdate
+            - gender
+  responses:
+    "201":
+      description: 註冊成功
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: 註冊成功
+    "409":
+      description: 電子郵件已被註冊
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: error
+              message:
+                type: string
+                example: 該電子郵件已被註冊。請使用其他電子郵件註冊或登入
+    "500":
+      description: 內部伺服器錯誤
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: error
+              message:
+                type: string
+                example: 註冊失敗

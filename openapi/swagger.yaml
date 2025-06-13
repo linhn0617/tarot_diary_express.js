@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: API Template
+  version: "1.0.0"
+  description: |
+    # API Template Project
+    This is a template project for demonstrating OpenAPI 3.0.0 specifications.
+    It provides a basic structure and examples for developers to build upon.
+
+servers:
+  - url: https://{host}
+    description: Production server
+    variables:
+      host:
+        default: "{{API_BASE_URL}}"
+
+tags:
+  - name: Auth
+    description: 認證與授權
+  - name: Users
+    description: 系統人員管理
+
+# 路由引用各個模組檔案
+paths:
+  # 認證相關路由
+  /api/auth/register:
+    $ref: "./paths/auth/auth-register.yaml"
+
+  # 使用者管理路由
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
