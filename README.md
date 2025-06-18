@@ -25,12 +25,12 @@ POSTGRES_PASSWORD=your_password
 POSTGRES_DB=your_DB_name
 
 # Mailer setting
-MAIL_MAILER= 
-MAIL_SCHEME=
-MAIL_HOST=
-MAIL_PORT=
-MAIL_USERNAME=
-MAIL_PASSWORD=
+MAIL_MAILER=smtp
+MAIL_SCHEME=your_mailer_encryption_protocol
+MAIL_HOST=your_mailer_host
+MAIL_PORT=your_mailer_port
+MAIL_USERNAME=your_mailer_username
+MAIL_PASSWORD=your_mailer_password
 
 # JWT setting
 JWT_SECRET=your_jwt_secret
