@@ -16,12 +16,24 @@ An Express.js backend API service designed for tarot card drawing and diary logg
 ```
 cp .env.example .env
 ```
-3. Edit the .env file to configure PostgreSQL username、password、DB name and URL
+3. Edit the .env file
 ```
+# PostgreSQL username、password、DB name and URL
 DATABASE_URL=postgres://<your_user_name>:<your_password>@postgres:5432/<your_DB_name>
 POSTGRES_USER=your_user_name
 POSTGRES_PASSWORD=your_password
 POSTGRES_DB=your_DB_name
+
+# Mailer setting
+MAIL_MAILER= 
+MAIL_SCHEME=
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+
+# JWT setting
+JWT_SECRET=your_jwt_secret
 ```
 4. Launch environment
 ```
