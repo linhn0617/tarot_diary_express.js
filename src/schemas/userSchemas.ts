@@ -5,7 +5,7 @@ import { users, genderEnum } from '../database/schema';
 // 用於插入用戶的 schema
 export const userInsertSchema = createInsertSchema(users, {
   name: (schema) => schema.min(1, '名字不可為空').max(255, '名字長度不可超過255個字'),
-  email: (schema) => schema.email('請輸入有效的Email地址').max(255),
+  email: (schema) => schema.email('請輸入有效的 Email 地址').max(255),
   password: (schema) => schema.min(8, '密碼至少需要8個字元')
     .regex(/[A-Z]/, '密碼必須包含一個大寫字母')
     .regex(/[a-z]/, '密碼必須包含一個小寫字母')
@@ -18,7 +18,7 @@ export const userInsertSchema = createInsertSchema(users, {
 // 註冊 API 的驗證 schema
 export const registerApiSchema = z.object({
     name: z.string().min(1, '名字不可為空').max(255, '名字長度不可超過255個字'),
-    email: z.string().email('請輸入有效的Email地址').max(255),
+    email: z.string().email('請輸入有效的 Email 地址').max(255),
     password: z.string().min(8, '密碼至少需要8個字元')
         .regex(/[A-Z]/, '密碼必須包含一個大寫字母')
         .regex(/[a-z]/, '密碼必須包含一個小寫字母')
